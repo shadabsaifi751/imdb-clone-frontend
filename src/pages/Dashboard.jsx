@@ -23,7 +23,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-6 h-screen">
+    <div className="container mx-auto px-4 py-6 h-full">
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-2xl font-bold text-center">Movies Collection</h2>
         <button
