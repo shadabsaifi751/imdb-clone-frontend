@@ -1,4 +1,4 @@
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { setNavSidebarOpen } from "../redux/sidebarSlice";
 import { XMarkIcon } from "@heroicons/react/24/outline";
