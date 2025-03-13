@@ -119,10 +119,15 @@ export default function Home() {
                         {moviesDetails?.producer_id?.name || "Unknown Producer"}
                       </h3>
                       <p className="text-xs sm:text-sm text-gray-400">
-                        Gender: {moviesDetails?.producer_id?.gender || "NA"}
+                        Gender: {(moviesDetails?.producer_id?.gender === "M" ? "Male" : "Female") || "NA"}
                       </p>
                       <p className="text-xs sm:text-sm text-gray-400">
-                        DOB: {moviesDetails?.producer_id?.dob || "NA"}
+                        DOB:{" "}
+                        {moviesDetails?.producer_id?.dob
+                          ? new Date(
+                              moviesDetails.producer_id.dob
+                            ).toLocaleDateString()
+                          : "NA"}
                       </p>
                       <p className="text-xs sm:text-sm text-gray-300 mt-2">
                         {moviesDetails?.producer_id?.bio || "NA"}
@@ -140,10 +145,13 @@ export default function Home() {
                             {actor?.name || "NA"}
                           </h3>
                           <p className="text-xs sm:text-sm text-gray-400">
-                            Gender: {actor?.gender || "NA"}
+                            Gender:{" "}
+                            {(actor?.gender === "M" ? "Male" : "Female") ||
+                              "NA"}
                           </p>
                           <p className="text-xs sm:text-sm text-gray-400">
-                            DOB: {actor?.dob || "NA"}
+                            DOB:{" "}
+                            {new Date(actor?.dob).toLocaleDateString() || "NA"}
                           </p>
                           <p className="text-xs sm:text-sm text-gray-300 mt-2">
                             {actor?.bio || "NA"}
