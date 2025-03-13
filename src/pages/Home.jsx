@@ -6,7 +6,6 @@ import { ContentLoader } from "../components/Loader";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const scrollRef = useRef(null);
   const [selectedMovieId, setSelectedMovieId] = useState(0);
   const { movies, loading, error } = useSelector((state) => state.movies);
 
@@ -14,25 +13,6 @@ export default function Home() {
     dispatch(fetchMovies());
   }, [dispatch]);
 
-  // Auto-scroll effect when there are more than 5 movies
-  useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (movies.length > 5 && scrollContainer) {
-      const scrollWidth =
-        scrollContainer.scrollWidth - scrollContainer.clientWidth;
-      let scrollPosition = 0;
-      const scrollSpeed = 1; // Adjust speed as needed
-      const interval = setInterval(() => {
-        scrollPosition += scrollSpeed;
-        if (scrollPosition >= scrollWidth) {
-          scrollPosition = 0; // Reset to start
-        }
-        scrollContainer.scrollLeft = scrollPosition;
-      }, 30); // Adjust interval for smoother/faster scrolling
-
-      return () => clearInterval(interval); // Cleanup on unmount
-    }
-  }, [movies.length]);
 
   const MovieDetailHandle = useCallback((id) => {
     setSelectedMovieId(id);
@@ -171,7 +151,6 @@ export default function Home() {
           Top 10 on IMDb this week
         </h2>
         <div
-          ref={scrollRef}
           className="flex overflow-x-auto no-scrollbar space-x-4 pb-4 scrollbar-hide"
           style={{ scrollBehavior: "smooth" }}
         >

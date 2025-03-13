@@ -27,7 +27,7 @@ export default function Login() {
     try {
       const token = await dispatch(login(credentials)).unwrap();
       if (token) {
-        navigate("/");
+        navigate("/dashboard");
       }
     } catch (err) {
       setError(err.message || "Login failed");
@@ -112,7 +112,7 @@ export default function Login() {
             Sign in
           </button>
         </form>
-        <div className="mt-6 text-center">
+        {/* <div className="mt-6 text-center">
           <p className="text-sm text-gray-400">Or continue with</p>
           <div className="mt-3 flex gap-2 flex-wrap md:flex-nowrap md:gap-0 justify-center space-x-0 md:space-x-4">
             <button className="flex items-center cursor-pointer justify-center w-full md:w-1/2 py-2 px-4 border border-gray-600 rounded-md shadow-sm text-sm font-medium text-gray-300 bg-gray-700 hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
@@ -132,7 +132,7 @@ export default function Login() {
               GitHub
             </button>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

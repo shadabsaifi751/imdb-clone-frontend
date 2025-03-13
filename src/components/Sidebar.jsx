@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { setNavSidebarOpen } from "../redux/sidebarSlice";
 import { XMarkIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
   const isNavSidebarOpen = useSelector(
@@ -73,27 +74,25 @@ export default function Sidebar() {
               <XMarkIcon className="size-8 text-white" />
             </button>
             <nav className="space-y-3 mt-5 pb-10">
-              {["Home", "Profile", "Dashboard", "Settings", "Contact Us"].map(
-                (item, index) => (
-                  <motion.div
-                    key={item}
-                    custom={index}
-                    initial="hidden"
-                    animate="visible"
-                    variants={navItemVariants}
+              {["Home", "Dashboard"].map((item, index) => (
+                <motion.div
+                  key={item}
+                  custom={index}
+                  initial="hidden"
+                  animate="visible"
+                  variants={navItemVariants}
+                >
+                  <Link
+                    to={item.toLowerCase()}
+                    onClick={closeSidebar}
+                    className="block px-4 text-xl font-semibold text-right py-2 rounded transition"
                   >
-                    <a
-                      href={`#${item.toLowerCase().replace(" ", "-")}`}
-                      onClick={closeSidebar}
-                      className="block px-4 text-xl font-semibold text-right py-2 rounded transition"
-                    >
-                      <span className="inline-block hover:text-yellow-600">
-                        {item}
-                      </span>
-                    </a>
-                  </motion.div>
-                )
-              )}
+                    <span className="inline-block hover:text-yellow-600">
+                      {item}
+                    </span>
+                  </Link>
+                </motion.div>
+              ))}
             </nav>
           </motion.div>
         )}

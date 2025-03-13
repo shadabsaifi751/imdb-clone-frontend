@@ -92,18 +92,11 @@ export default function UserMenu({ isLogin }) {
       {isLogin && isDropdownOpen && (
         <div className="absolute right-0 top-10 mt-2 w-48 bg-[#0b121f] border border-gray-600 rounded-md shadow-lg z-10">
           <Link
-            to="/profile"
+            to="/"
             className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
             onClick={() => setIsDropdownOpen(false)}
           >
-            Profile
-          </Link>
-          <Link
-            to="/settings"
-            className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white"
-            onClick={() => setIsDropdownOpen(false)}
-          >
-            Settings
+            Home
           </Link>
           <Link
             to="/dashboard"
